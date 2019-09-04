@@ -51,7 +51,7 @@ export const actions = {
 };
 
 export default function createModule(settings = {}) {
-  if (settings == null) {
+  if (settings.pageSize == null) {
     throw new Error('settings.pageSize is required');
   }
 
