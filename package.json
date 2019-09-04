@@ -1,0 +1,26 @@
+{
+  "name": "vuex-local-pagination",
+  "version": "1.0.0",
+  "description": "Paginate an array in your Vuex state",
+  "main": "dist/index.js",
+  "module": "es/index.js",
+  "scripts": {
+    "test": "jest",
+    "pretest": "npm run build:commonjs",
+    "build:commonjs": "BABEL_ENV=commonjs babel index.js --out-dir dist",
+    "build:es": "BABEL_ENV=es babel index.js --out-dir es",
+    "build": "npm run build:commonjs && npm run build:es",
+    "prebuild": "npm run clean",
+    "clean": "rimraf dist es",
+    "prepublishOnly": "npm test && npm run build"
+  },
+  "keywords": ["vuex", "pagination", "vue"],
+  "author": "Paul Salaets",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^24.9.0",
+    "rimraf": "^3.0.0"
+  }
+}
