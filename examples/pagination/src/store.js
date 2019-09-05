@@ -11,7 +11,7 @@ export default new Vuex.Store({
   },
   getters: {
     pageCount(state, getters) {
-      return getters['pagination/pageCount'](state.records.length);
+      return getters['pagination/pageCount'](getters.totalRecordCount);
     },
     currentPage(state, getters) {
       return getters['pagination/currentPage'];
@@ -24,6 +24,9 @@ export default new Vuex.Store({
     },
     visibleRecords(state, getters) {
       return getters['pagination/slice'](state.records);
+    },
+    totalRecordCount(state, getters) {
+      return state.records.length;
     }
   },
   mutations: {},
@@ -40,6 +43,11 @@ export default new Vuex.Store({
 
       context.dispatch('pagination/goToPage', {
         page: currentPage - 1
+      });
+    },
+    goToPage(context, payload) {
+      context.dispatch('pagination/goToPage', {
+        page: payload.page
       });
     }
   },

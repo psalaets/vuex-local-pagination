@@ -49,6 +49,18 @@ describe('getters', () => {
 
       expect(result).toBe(0);
     });
+
+    test('with negative record count', () => {
+      const state = {};
+      const otherGetters = {
+        start: 0,
+        pageSize: 10
+      };
+
+      const result = getters.pageCount(state, otherGetters)(-1);
+
+      expect(result).toBe(0);
+    });
   });
 
   describe('currentPage', () => {
@@ -189,6 +201,47 @@ describe('getters', () => {
       const result = getters.slice(state, otherGetters)(records);
 
       expect(result).toEqual([]);
+    });
+  });
+
+  describe('pages', () => {
+    test('no pages', () => {
+      const state = {};
+      const otherGetters = {
+        start: 0,
+        pageSize: 2,
+        pageCount: () => 0
+      };
+
+      const result = getters.pages(state, otherGetters)(0);
+
+      expect(result).toEqual([]);
+    });
+
+    test('one page', () => {
+      const state = {};
+      const otherGetters = {
+        start: 0,
+        pageSize: 2,
+        pageCount: () => 1
+      };
+
+      const result = getters.pages(state, otherGetters)(1);
+
+      expect(result).toEqual([1]);
+    });
+
+    test('many pages', () => {
+      const state = {};
+      const otherGetters = {
+        start: 0,
+        pageSize: 2,
+        pageCount: () => 4
+      };
+
+      const result = getters.pages(state, otherGetters)(8);
+
+      expect(result).toEqual([1, 2, 3, 4]);
     });
   });
 });

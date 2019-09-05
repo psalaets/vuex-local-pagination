@@ -6,13 +6,29 @@ export const getters = {
     return state.pageSize;
   },
   pageCount(state, getters) {
-    return totalRecords => Math.ceil(totalRecords / getters.pageSize);
+    return totalRecords => {
+      if (totalRecords < 1) return 0;
+      return Math.ceil(totalRecords / getters.pageSize);
+    }
   },
   currentPage(state, getters) {
     return Math.floor(getters.start / getters.pageSize) + 1;
   },
   slice(state, getters) {
     return records => records.slice(getters.start, getters.start + getters.pageSize);
+  },
+  pages(state, getters) {
+    return totalRecords => {
+      const pages = [];
+
+      let page = 1;
+      while (page <= getters.pageCount(totalRecords)) {
+        pages.push(page);
+        page += 1;
+      }
+
+      return pages;
+    };
   }
 };
 

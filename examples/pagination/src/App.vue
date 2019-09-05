@@ -2,7 +2,7 @@
   <div id="app">
     <h1>Pagination Example</h1>
     <ul>
-      <li v-for="record in records" :key="record.id">
+      <li v-for="record in visibleRecords" :key="record.id">
         {{record.label}}
       </li>
     </ul>
@@ -10,33 +10,39 @@
     <div>Viewing page {{currentPage}} of {{pageCount}}</div>
 
     <button :disabled="!hasPrevPage" @click="goToPrevPage">
-      Go to prev page
+      Prev page
+    </button>
+
+    <button
+      v-for="page in pages"
+      :key="page"
+      @click="handleGoToPage(page)"
+    >
+      {{page}}
     </button>
 
     <button :disabled="!hasNextPage" @click="goToNextPage">
-      Go to next page
+      Next page
     </button>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'app',
   computed: {
-    currentPage() {
-      return this.$store.getters.currentPage;
-    },
-    pageCount() {
-      return this.$store.getters.pageCount;
-    },
-    hasNextPage() {
-      return this.$store.getters.hasNextPage;
-    },
-    hasPrevPage() {
-      return this.$store.getters.hasPrevPage;
-    },
-    records() {
-      return this.$store.getters.visibleRecords;
+    ...mapGetters([
+      'currentPage',
+      'pageCount',
+      'hasNextPage',
+      'hasPrevPage',
+      'visibleRecords',
+      'totalRecordCount'
+    ]),
+    pages() {
+      return this.$store.getters['pagination/pages'](this.totalRecordCount);
     }
   },
   methods: {
@@ -45,6 +51,9 @@ export default {
     },
     goToPrevPage() {
       this.$store.dispatch('goToPrevPage');
+    },
+    handleGoToPage(page) {
+      this.$store.dispatch('goToPage', {page});
     }
   }
 }
