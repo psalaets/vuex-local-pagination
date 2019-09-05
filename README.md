@@ -17,7 +17,7 @@ The default export is a factory function for creating instances of this module.
 ```js
 import createPagination from 'vuex-local-pagination';
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   // ...
   modules: {
     pagination: createPagination({ pageSize: 15 })
