@@ -27,9 +27,55 @@ export default new Vuex.Store({
 
 ### Getters
 
+#### start
 
+First record in the pagination window. Zero-based and defaults to 0.
+
+#### pageSize
+
+Size of the pagination window. Initial value is passed in during module creation.
+
+#### pageCount(totalRecordCount)
+
+Number of pages given the number of records.
+
+#### currentPage
+
+Current page number.
+
+#### slice(records)
+
+The slice of your records that fall within the pagination window.
+
+#### pages(totalRecordCount)
+
+Array of page numbers given the number of records.
 
 ### Actions
+
+#### goToPage
+
+Move pagination window to a specific page.
+
+Required payload:
+
+```js
+{
+  page: <number>
+}
+```
+
+#### changePageSize
+
+Change number of records in a page.
+
+Required payload:
+
+```js
+{
+  pageSize: <number>
+}
+```
 
 ## License
 
