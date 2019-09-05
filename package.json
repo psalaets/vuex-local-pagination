@@ -22,6 +22,10 @@
     "type": "git",
     "url": "https://github.com/psalaets/vuex-local-pagination.git"
   },
+  "files": [
+    "dist",
+    "es"
+  ],
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
