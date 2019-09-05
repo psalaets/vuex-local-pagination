@@ -17,6 +17,11 @@
   "keywords": ["vuex", "pagination", "vue"],
   "author": "Paul Salaets",
   "license": "MIT",
+  "homepage": "https://github.com/psalaets/vuex-local-pagination",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psalaets/vuex-local-pagination.git"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
