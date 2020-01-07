@@ -1,6 +1,6 @@
 {
   "name": "vuex-local-pagination",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Paginate an array in your Vuex state",
   "main": "dist/index.js",
   "module": "es/index.js",
@@ -14,7 +14,11 @@
     "clean": "rimraf dist es",
     "prepublishOnly": "npm test && npm run build"
   },
-  "keywords": ["vuex", "pagination", "vue"],
+  "keywords": [
+    "vuex",
+    "pagination",
+    "vue"
+  ],
   "author": "Paul Salaets",
   "license": "MIT",
   "homepage": "https://github.com/psalaets/vuex-local-pagination",
