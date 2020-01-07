@@ -29,27 +29,39 @@ const store = new Vuex.Store({
 
 #### start
 
-First record in the pagination window. Zero-based and defaults to 0.
+Index of the first record in the pagination window. Defaults to 0.
+
+Returns: Zero-based number
 
 #### pageSize
 
 Size of the pagination window. Initial value is passed in during module creation.
 
+Returns: number
+
 #### pageCount(totalRecordCount)
 
 Number of pages given the number of records.
+
+Returns: number
 
 #### currentPage
 
 Current page number.
 
+Returns: One-based number
+
 #### slice(records)
 
 The slice of your records that fall within the pagination window.
 
+Returns: Array of records
+
 #### pages(totalRecordCount)
 
 Array of page numbers given the number of records.
+
+Returns: Array of one-based numbers
 
 ### Actions
 
